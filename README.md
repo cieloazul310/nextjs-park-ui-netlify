@@ -1,10 +1,13 @@
-# Next.js (App Router), Park UI and Panda CSS example project on Netlify
+# Next.js (App Router), Park UI and Panda CSS example project on Vercel
 
 - [Next.js] v14 (App Router)
 - [Park UI] v0
 - [Panda CSS] v0
 
 Demo  
+<https://nextjs-park-ui-on-vercel.vercel.app>
+
+Demo on Netlify  
 <https://cieloazul310-nextjs-park-ui.netlify.app>
 
 ## Project structure
