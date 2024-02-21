@@ -5,7 +5,7 @@
 - [Panda CSS] v0
 
 Demo  
-<https://cieloazul310-nextjs-park-ui.netlify.app>
+<https://nextjs-park-ui-netlify.vercel.app>
 
 ## Project structure
 
