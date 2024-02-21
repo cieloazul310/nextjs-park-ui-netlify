@@ -72,6 +72,3 @@ jobs:
 
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
-
-      - name: Check out dir
-        run: tree out/
