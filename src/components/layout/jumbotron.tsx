@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ElementType } from "react";
-import { Heading } from "@/components";
-import { css, cx } from "@styled-system/css";
-import { flex } from "@styled-system/patterns";
+import { Heading } from "@/components/ui/heading";
+import { css, cx } from "styled-system/css";
+import { flex } from "styled-system/patterns";
 
 export type JumbotronProps = HTMLAttributes<HTMLOrSVGElement> & {
   as?: ElementType;
