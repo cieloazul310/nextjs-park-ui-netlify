@@ -1,4 +1,4 @@
-import { article } from "@styled-system/patterns";
+import { article } from "styled-system/patterns";
 
 export const Blockquote = (props: React.ComponentProps<"blockquote">) => (
   <blockquote

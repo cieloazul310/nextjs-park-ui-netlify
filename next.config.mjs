@@ -3,9 +3,6 @@ import remarkFrontmatter from "remark-frontmatter";
 import createMDX from "@next/mdx";
 
 const withMdx = createMDX({
-  experimental: {
-    mdxRs: true,
-  },
   options: {
     remarkPlugins: [remarkGfm, remarkFrontmatter],
     rehypePlugins: [],

@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ElementType } from "react";
-import { css, cx } from "@styled-system/css";
+import { css, cx } from "styled-system/css";
 
 export type BlockProps = HTMLAttributes<HTMLOrSVGElement> & {
   as?: ElementType;

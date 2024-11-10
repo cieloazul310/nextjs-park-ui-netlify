@@ -1,8 +1,10 @@
 import NextLink from "next/link";
-import { css } from "@styled-system/css";
-import { flex, container } from "@styled-system/patterns";
-import { Heading } from "../ui";
-import { ColorModeHandler } from "../client";
+import { FaGithub } from "react-icons/fa6";
+import { css } from "styled-system/css";
+import { flex, container } from "styled-system/patterns";
+import { Heading } from "../ui/heading";
+import ColorModeHandler from "../client/color-mode-handler";
+import { IconButton } from "../ui/icon-button";
 
 const siteTitle = "Next.js + Park UI";
 
@@ -44,6 +46,15 @@ function Header() {
           </Heading>
         </NextLink>
         <div className={css({ flexGrow: 1, hideBelow: "sm" })} />
+        <IconButton variant="ghost" asChild>
+          <a
+            href="https://github.com/cieloazul310/nextjs-park-ui-on-vercel"
+            target="_blank"
+            rel="noopener noreferer"
+          >
+            <FaGithub />
+          </a>
+        </IconButton>
         <ColorModeHandler className={css({ hideBelow: "sm" })} />
       </div>
     </header>

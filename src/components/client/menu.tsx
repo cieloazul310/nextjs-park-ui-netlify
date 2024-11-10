@@ -2,7 +2,7 @@
 
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import { SegmentGroup } from "../ui";
+import { SegmentGroup } from "../ui/segment-group";
 
 function Menu(props: SegmentGroup.RootProps) {
   const pathname = usePathname();

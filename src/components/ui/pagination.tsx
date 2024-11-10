@@ -1,71 +1,41 @@
-import {
-  Pagination as ArkPagination,
-  type PaginationRootProps,
-} from "@ark-ui/react/pagination";
+"use client";
 import { forwardRef } from "react";
-import { css, cx } from "@styled-system/css";
-import { splitCssProps } from "@styled-system/jsx";
-import {
-  pagination,
-  type PaginationVariantProps,
-} from "@styled-system/recipes";
-import type { Assign, JsxStyleProps } from "@styled-system/types";
 import { Button } from "./button";
 import { IconButton } from "./icon-button";
+import * as StyledPagination from "./styled/pagination";
 
-export interface PaginationProps
-  extends Assign<JsxStyleProps, PaginationRootProps>,
-    PaginationVariantProps {}
+export interface PaginationProps extends StyledPagination.RootProps {}
 
 export const Pagination = forwardRef<HTMLElement, PaginationProps>(
   (props, ref) => {
-    const [variantProps, paginationProps] = pagination.splitVariantProps(props);
-    const [cssProps, localProps] = splitCssProps(paginationProps);
-    const { className, ...rootProps } = localProps;
-    const styles = pagination(variantProps);
-
     return (
-      <ArkPagination.Root
-        ref={ref}
-        // @ts-expect-error TODO cssProps is to complex to be typed
-        className={cx(styles.root, css(cssProps), className)}
-        {...rootProps}
-      >
-        {({ pages }) => (
-          <>
-            <ArkPagination.PrevTrigger className={styles.prevTrigger} asChild>
-              <IconButton variant="ghost" aria-label="Next Page">
-                <ChevronLeftIcon />
-              </IconButton>
-            </ArkPagination.PrevTrigger>
-            {pages.map((page, index) =>
+      <StyledPagination.Root ref={ref} {...props}>
+        <StyledPagination.PrevTrigger asChild>
+          <IconButton variant="ghost" aria-label="Next Page">
+            <ChevronLeftIcon />
+          </IconButton>
+        </StyledPagination.PrevTrigger>
+        <StyledPagination.Context>
+          {(pagination) =>
+            pagination.pages.map((page, index) =>
               page.type === "page" ? (
-                <ArkPagination.Item
-                  className={styles.item}
-                  key={index}
-                  {...page}
-                  asChild
-                >
+                <StyledPagination.Item key={index} {...page} asChild>
                   <Button variant="outline">{page.value}</Button>
-                </ArkPagination.Item>
+                </StyledPagination.Item>
               ) : (
-                <ArkPagination.Ellipsis
-                  className={styles.ellipsis}
-                  key={index}
-                  index={index}
-                >
+                <StyledPagination.Ellipsis key={index} index={index}>
                   &#8230;
-                </ArkPagination.Ellipsis>
+                </StyledPagination.Ellipsis>
               ),
-            )}
-            <ArkPagination.NextTrigger className={styles.nextTrigger} asChild>
-              <IconButton variant="ghost" aria-label="Next Page">
-                <ChevronRightIcon />
-              </IconButton>
-            </ArkPagination.NextTrigger>
-          </>
-        )}
-      </ArkPagination.Root>
+            )
+          }
+        </StyledPagination.Context>
+        <StyledPagination.NextTrigger asChild>
+          <IconButton variant="ghost" aria-label="Next Page">
+            <ChevronRightIcon />
+          </IconButton>
+        </StyledPagination.NextTrigger>
+      </StyledPagination.Root>
     );
   },
 );

@@ -14,8 +14,8 @@ import {
   Ul,
   Hr,
   Blockquote,
-  Link,
-} from "@/components";
+} from "@/components/mdx";
+import Link from "@/components/link";
 
 export function useMDXComponents(
   components: MDXComponents = {},

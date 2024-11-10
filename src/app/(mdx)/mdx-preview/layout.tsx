@@ -1,10 +1,9 @@
-import { Jumbotron, Block, Menu } from "@/components";
+import type { PropsWithChildren } from "react";
+import Block from "@/components/layout/block";
+import Jumbotron from "@/components/layout/jumbotron";
+import Menu from "@/components/client/menu";
 
-export default function PageLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function PageLayout({ children }: PropsWithChildren) {
   return (
     <>
       <Jumbotron title="MDX Preview" />

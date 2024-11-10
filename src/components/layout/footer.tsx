@@ -1,6 +1,6 @@
 import NextLink from "next/link";
-import { css } from "@styled-system/css";
-import { flex } from "@styled-system/patterns";
+import { css } from "styled-system/css";
+import { flex } from "styled-system/patterns";
 
 const siteTitle = "Next.js + Park UI";
 

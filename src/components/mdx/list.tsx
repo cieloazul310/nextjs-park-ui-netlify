@@ -1,4 +1,4 @@
-import { article } from "@styled-system/patterns";
+import { article } from "styled-system/patterns";
 
 export const Ol = (props: React.ComponentProps<"ol">) => (
   <ol
