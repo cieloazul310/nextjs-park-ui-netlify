@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTheme } from "next-themes";
-import { MdSunny, MdOutlineNightlight } from "react-icons/md";
+import { MdSunny, MdOutlineNightlight, MdComputer } from "react-icons/md";
 import { IconButton, type IconButtonProps } from "../ui/icon-button";
 import { Tooltip } from "../ui/tooltip";
 
@@ -11,11 +11,17 @@ import { Tooltip } from "../ui/tooltip";
  * https://github.com/pacocoursey/next-themes/tree/main?tab=readme-ov-file#avoid-hydration-mismatch
  */
 
-function ColorModeHandler({ className }: IconButtonProps) {
+function ColorModeHandler({ className, ...props }: IconButtonProps) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { icon, next } = useMemo(() => {
+    if (theme === "dark")
+      return { icon: <MdOutlineNightlight />, next: "system" };
+    if (theme === "light") return { icon: <MdSunny />, next: "dark" };
+    return { icon: <MdComputer />, next: "light" };
+  }, [theme]);
   const onClick = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    setTheme(next);
   };
   useEffect(() => {
     setMounted(true);
@@ -28,17 +34,21 @@ function ColorModeHandler({ className }: IconButtonProps) {
   return (
     <Tooltip.Root openDelay={250} closeDelay={250} closeOnPointerDown>
       <Tooltip.Trigger asChild>
-        <IconButton className={className} variant="ghost" onClick={onClick}>
-          {theme === "dark" ? <MdOutlineNightlight /> : <MdSunny />}
+        <IconButton
+          className={className}
+          variant="ghost"
+          onClick={onClick}
+          aria-label={`Change to ${next} mode.`}
+          {...props}
+        >
+          {icon}
         </IconButton>
       </Tooltip.Trigger>
       <Tooltip.Positioner>
         <Tooltip.Arrow>
           <Tooltip.ArrowTip />
         </Tooltip.Arrow>
-        <Tooltip.Content>
-          Change to {theme === "dark" ? "light" : "dark"} mode.
-        </Tooltip.Content>
+        <Tooltip.Content>Change to {next} mode.</Tooltip.Content>
       </Tooltip.Positioner>
     </Tooltip.Root>
   );
